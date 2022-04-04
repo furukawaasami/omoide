@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+root to: "public/homes#top"
 # ユーザー用
 # URL /customers/sign_in ...
 devise_for :end_users,skip: [:passwords], controllers: {
