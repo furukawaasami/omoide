@@ -1,2 +1,7 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+ようこそ！<br>
+Omoideは皆さんの旅の思い出写真を地図と一緒に記録します。<br>
+旅先での最高のOmoideを共有してください。<br>
+
+<%=link_to "新規登録", new_end_user_registration_path, class:"btn btn-outline-info" %>
+<%=link_to "ログイン", new_end_user_session_path, class:"btn btn-outline-info" %>
+<%=link_to "ゲストログイン(閲覧用)", end_users_guest_sign_in_path, class:"btn btn-outline-info", method: :post %>
