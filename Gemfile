@@ -59,3 +59,5 @@ group :production do
   gem 'mysql2'
 end
 gem 'devise'
+gem 'gmaps4rails'
+gem 'geocoder'

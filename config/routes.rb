@@ -9,7 +9,7 @@ devise_for :end_users,skip: [:passwords], controllers: {
 }
 
 devise_scope :end_user do
-    post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
+    post 'end_user/guest_sign_in', to: 'user/sessions#guest_sign_in'
   end
 
 # 管理者用
@@ -17,5 +17,15 @@ devise_scope :end_user do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ scope module: :public do
+    resources :posts
+    resource :end_users, only:[:show, :edit, :update] do
+     collection do
+        get "quit"
+        patch "out"
+        end
+      end
+  end
+
+
 end

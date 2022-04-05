@@ -3,6 +3,7 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :posts, dependent: :destroy
 
    def self.guest
     find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |end_user|
