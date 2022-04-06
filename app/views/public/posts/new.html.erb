@@ -1,29 +1,59 @@
 新規投稿
 <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap"></script>-->
 <h2>gmap</h2>
-<div id='map'></div>
+<%= form_with model: @post,url: posts_path do |f| %>
+ <div class="form-group">
+   <%= f.label :title, 'タイトル' %>
+   <%= f.text_field :title, class: 'form-control' %>
+   <%= f.label :explanation, '説明' %>
+   <%= f.text_field :explanation, class: 'form-control' %>
+ </div>
+ <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
+ <% end %>
 
+<div id="display">何かが表示される、、、、！</div>
+<div id='map'></div>
+<input id="address" type="textbox" value="GeekSalon">
+<input type="button" value="Encode" onclick="codeAddress()">
 <style>
 #map {
-  height: 600px;
-  width: 600px;
+  height: 500px;
+  width: 500px;
 }
 </style>
 
 <script>
 let map
-
+let geocoder
+const display = document.getElementById('display')
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7828, lng:-73.9653},
-    zoom: 12,
+    zoom: 5,
   });
 
   marker = new google.maps.Marker({
     position:  {lat: 40.7828, lng:-73.9653},
     map: map
+  });
+}
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
   });
 }
 </script>
