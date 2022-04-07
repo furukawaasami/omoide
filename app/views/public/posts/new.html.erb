@@ -7,13 +7,20 @@
    <%= f.text_field :title, class: 'form-control' %>
    <%= f.label :explanation, '説明' %>
    <%= f.text_field :explanation, class: 'form-control' %>
+   <%= f.label :image, '写真選択' %>
+   <%= f.file_field :image, accept: "image/*" %>
+   <%= f.hidden_field :latitude %>
+   <%= f.hidden_field :longitude %>
+   <%= f.hidden_field :address %>
  </div>
  <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
  <% end %>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['YOUR_API_KEY'] %>&callback=initMap" async defer></script>
+
 <div id="display">何かが表示される、、、、！</div>
 <div id='map'></div>
-<input id="address" type="textbox" value="GeekSalon">
+<input id="address" type="textbox" value="東京駅">
 <input type="button" value="Encode" onclick="codeAddress()">
 <style>
 #map {
@@ -31,13 +38,14 @@ function initMap(){
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7828, lng:-73.9653},
-    zoom: 5,
+    zoom: 10,
   });
 
-  marker = new google.maps.Marker({
-    position:  {lat: 40.7828, lng:-73.9653},
-    map: map
-  });
+  // marker = new google.maps.Marker({
+  //   position:  myLatlng,
+  //   draggable: true,
+  //   map: map
+  // });
 }
 
 function codeAddress(){
@@ -48,6 +56,7 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
+          draggable: false,
           position: results[0].geometry.location
       });
       display.textContent = "検索結果：" + results[ 0 ].geometry.location
@@ -57,4 +66,3 @@ function codeAddress(){
   });
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['YOUR_API_KEY'] %>&callback=initMap" async defer></script>
