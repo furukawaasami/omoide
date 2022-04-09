@@ -1,1 +1,7 @@
 <%= @end_user.nickname %>さん
+フォロー数: <%= @end_user.followings.count %>
+フォロワー数: <%= @end_user.followers.count %>
+
+<% @posts.each do |posts| %>
+<%= posts.title %>
+<% end %>

@@ -32,9 +32,11 @@
 <script>
 let map
 let geocoder
+let MarkerArray
 const display = document.getElementById('display')
 function initMap(){
   geocoder = new google.maps.Geocoder()
+  MarkerArray = new google.maps.MVCArray();
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7828, lng:-73.9653},
@@ -52,13 +54,19 @@ function codeAddress(){
   let inputAddress = document.getElementById('address').value;
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    $("#post_latitude").val(results[0].geometry.location.lat());
+    $("#post_longitude").val(results[0].geometry.location.lng());
+
     if (status == 'OK') {
+       MarkerArray.forEach(function (marker, idx) { marker.setMap(null); });
       map.setCenter(results[0].geometry.location);
+      
       var marker = new google.maps.Marker({
           map: map,
           draggable: false,
           position: results[0].geometry.location
       });
+      MarkerArray.push(marker);
       display.textContent = "検索結果：" + results[ 0 ].geometry.location
     } else {
       alert('該当する結果がありませんでした：' + status);

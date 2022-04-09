@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
 root to: "public/homes#top"
 # ユーザー用
 # URL /customers/sign_in ...
@@ -24,7 +28,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
         get "quit"
         patch "out"
         end
-      end
+        resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+    end
   end
 
 

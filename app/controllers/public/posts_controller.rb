@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
 
   def index
+    @posts = Post.all
   end
 
   def show
@@ -8,16 +9,11 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = Post.all
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-    marker.lat post.latitude
-    marker.lng post.longitude
-    marker.infowindow post.address
-    end
   end
 
   def create
     @post = Post.new(post_params)
+    @post.end_user_id = current_end_user.id
     if @post.save
       redirect_to posts_path
     else
