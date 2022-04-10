@@ -1,14 +1,30 @@
-ユーザー一覧
-<% @end_users.each do |end_user| %>
-  <%= end_user.nickname %>
-  <% unless end_user == current_end_user %>
-    <% if current_end_user.following?(end_user) %>
-      <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %>
+<div class="container">
+  <h3>ユーザー一覧</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>ニックネーム</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @end_users.each do |end_user| %>
+      <td><%= end_user.nickname %></td>
+      <td>フォロー数: <%= end_user.followings.count %></td>
+      <td>フォロワー数: <%= end_user.followers.count %></td>
+      <td><% unless end_user == current_end_user %>
+          <% if current_end_user.following?(end_user) %>
+            <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post %>
+          <% end %>
+          <% end %>
+      </td>
+    </tr>
     <% end %>
-    フォロー数: <%= end_user.followings.count %>
-    フォロワー数: <%= end_user.followers.count %>
-  <% end %>
-
-<% end %>
+  </tbody>
+</table>
+</div>
