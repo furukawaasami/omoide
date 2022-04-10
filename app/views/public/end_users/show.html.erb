@@ -98,7 +98,12 @@
           <tr>
             <td><%= posts.title %></td>
             <td><%= posts.explanation %></td>
-            <td></td>
+            <td>
+              <% if posts.end_user == current_end_user %>
+              <%= link_to "編集",edit_post_path(posts.id), class: "btn btn-sm btn-primary" %>
+              <%= link_to "削除",post_path(posts.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
