@@ -32,21 +32,32 @@ function initMap(){
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 35.68123620000001, lng:139.7671248},
-    zoom: 7,
+    zoom: 10,
   });
 
   // 保存された地図情報からピンをさす
-    <% @posts.each do |posts| %>
+  <% @posts.each do |posts| %>
     // google.maps.LatLngインスタンスを生成
-    pos = new google.maps.LatLng(
-    <%=posts.latitude%>,
-    <%=posts.longitude%>
-    );
-    default_marker = new google.maps.Marker({
-    map: map,
-    position: pos,
-    });
-    <% end %>
+    (function(){
+      // var, let, const
+      const contentString = '<%=link_to post_path(posts.id) do %><%= posts.title %><% end %>';
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      const position = new google.maps.LatLng(
+        <%= posts.latitude %>,
+        <%= posts.longitude %>
+      );
+      const default_marker = new google.maps.Marker({
+        map,
+        position,
+        title: contentString,
+      });
+      default_marker.addListener('click', function() {
+        infowindow.open(map, default_marker);
+      })
+    })();
+  <% end %>
 }
 
 function codeAddress(){
