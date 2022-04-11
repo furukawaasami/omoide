@@ -1,22 +1,26 @@
-<% if end_users.exists? %>
-  <% end_users.each do |end_user| %>
-    <table>
+<div class="container">
+  <div class="row mt-5">
+    <% if end_users.exists? %>
+    <% end_users.each do |end_user| %>
+    <table class="table">
       <thead>
         <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
+          <th>ニックネーム</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= end_user.name %></td>
+          <td><%= end_user.nickname %></td>
           <td>フォロー数: <%= end_user.followings.count %></td>
           <td>フォロワー数: <%= end_user.followers.count %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
+  </div>
+</div>
