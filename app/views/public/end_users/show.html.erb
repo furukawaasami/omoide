@@ -96,7 +96,7 @@
         <tbody>
           <% @posts.each do |posts| %>
           <tr>
-            <td><%= posts.title %></td>
+            <td><%= link_to post_path(posts.id) do %><%= posts.title %><% end %></td>
             <td><%= posts.explanation %></td>
             <td>
               <% if posts.end_user == current_end_user %>

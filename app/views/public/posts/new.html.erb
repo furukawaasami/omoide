@@ -65,19 +65,19 @@
     <input id="address" type="textbox" value="東京駅">
     <input type="button" value="Search" onclick="codeAddress()">
     <%= form_with model: @post,url: posts_path do |f| %>
-    <div class="form-group">
-      <%= f.label :title, 'タイトル' %>
-      <%= f.text_field :title, class: 'form-control' %>
-      <%= f.label :explanation, '説明' %>
-      <%= f.text_area :explanation, class: 'form-control' %>
-      <%= f.label :image, '写真選択' %>
-      <%= f.file_field :image, accept: "image/*" %>
-      <%= f.hidden_field :latitude %>
-      <%= f.hidden_field :longitude %>
-      <%= f.hidden_field :address %>
-    </div>
-      <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
-      <% end %>
+      <div class="form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :explanation, '説明' %>
+        <%= f.text_area :explanation, class: 'form-control' %>
+        <%= f.label :image, '写真選択' %>
+        <%= f.file_field :image, accept: "image/*" %>
+        <%= f.hidden_field :latitude %>
+        <%= f.hidden_field :longitude %>
+        <%= f.hidden_field :address %>
+        <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
