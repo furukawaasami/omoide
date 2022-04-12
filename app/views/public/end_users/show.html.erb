@@ -3,18 +3,14 @@
 <% end %>
 <div class="container">
   <div class="row mt-5">
-    <div class="col-6">
-      <h2><%= @end_user.nickname %>さん</h2>
-    </div>
-    <div class="col-6">
-      <%= link_to end_user_followings_path(@end_user.id) do %>フォロー数: <%= @end_user.followings.count %><% end %>
-      <%= link_to end_user_followers_path(@end_user.id) do %>フォロワー数: <%= @end_user.followers.count %><% end %>
-    </div>
+    <h2><%= @end_user.nickname %>さん</h2>
+    <%= link_to end_user_followings_path(@end_user.id) do %>フォロー数: <%= @end_user.followings.count %><% end %>
+    <%= link_to end_user_followers_path(@end_user.id) do %>フォロワー数: <%= @end_user.followers.count %><% end %>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-md">
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['YOUR_API_KEY'] %>&callback=initMap" async defer></script>
       <div id='map'></div>
       <input id="address" type="textbox" value="東京駅">
@@ -84,12 +80,12 @@
         }
       </script>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <table class="table">
         <thead>
           <tr>
             <th>タイトル</th>
-            <th>説明</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -97,7 +93,7 @@
           <% @posts.each do |posts| %>
           <tr>
             <td><%= link_to post_path(posts.id) do %><%= posts.title %><% end %></td>
-            <td><%= posts.explanation %></td>
+            <td><%= "コメント数：" %><%= posts.post_comments.count %></td>
             <td>
               <% if posts.end_user == current_end_user %>
               <%= link_to "編集",edit_post_path(posts.id), class: "btn btn-sm btn-primary" %>
