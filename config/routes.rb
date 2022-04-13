@@ -14,6 +14,7 @@ devise_scope :end_user do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
  scope module: :public do
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
@@ -23,6 +24,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    member do
+      get :favorite_lists
+    end
     end
   end
 
