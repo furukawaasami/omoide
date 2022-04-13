@@ -10,6 +10,24 @@
       <table class="table">
         <thead>
           <tr>
+            <th>
+              <% if @post.favorited_by?(current_end_user) %>
+              <p>
+                <%= link_to post_favorites_path(@post), method: :delete do %>
+                  ♥<%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to post_favorites_path(@post), method: :post do %>
+                  ♡<%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+            </th>
+            <td></td>
+          </tr>
+          <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>
           </tr>
