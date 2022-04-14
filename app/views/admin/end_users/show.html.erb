@@ -1,0 +1,11 @@
+<%= link_to "admin signout", destroy_admin_session_path, method: :delete %>
+
+<%= @end_user.nickname %>
+<%= @end_user.email%>
+<%# 退会ステータス%>
+<% @posts.each do |posts| %>
+<%= link_to admin_post_path(posts.id) do %><%= posts.title %><% end %>
+<%= posts.explanation %>
+<%= image_tag posts.get_image(100,100) %>
+<%#=  %>
+<% end %>

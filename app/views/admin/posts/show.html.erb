@@ -1,0 +1,8 @@
+<%= @post.title %>
+<%= @post.explanation %>
+<%= link_to "削除", admin_post_path(@post.id), method: :delete, class: "btn btn-sm btn-danger" %>
+<% @post.post_comments.each do |post_comment| %>
+<%= post_comment.end_user.nickname %>
+<%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+<% end %>
