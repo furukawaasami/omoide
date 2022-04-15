@@ -3,6 +3,11 @@
 <%= @end_user.nickname %>
 <%= @end_user.email%>
 <%# 退会ステータス%>
+<%= form_with model: @end_user,url: admin_end_user_path(@end_user.id), method: :patch do |f| %>
+<%= f.radio_button :is_deleted, false %>有効
+<%= f.radio_button :is_deleted, true %>退会
+<%= f.submit '変更を保存',class: 'btn btn-success' %>
+<% end %>
 <% @posts.each do |posts| %>
 <%= link_to admin_post_path(posts.id) do %><%= posts.title %><% end %>
 <%= posts.explanation %>

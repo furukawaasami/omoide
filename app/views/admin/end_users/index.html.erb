@@ -11,8 +11,14 @@
       <tbody>
         <tr>
           <% @end_users.each do |end_user| %>
-          <td><%= link_to admin_end_user_path(end_user.id) do  %><%= end_user.nickname %><% end %></td>
-          <td><%#= 退会ステータス%></td>
+          <td><%= link_to admin_end_user_path(end_user.id) do %><%= end_user.nickname %><% end %></td>
+          <td>
+            <% if end_user.is_deleted == false %>
+              <div class="col-2 text-success">有効</div>
+            <% else %>
+              <div class="col-2 text-secondary">退会</div>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>

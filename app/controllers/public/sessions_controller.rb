@@ -15,6 +15,18 @@ class Public::SessionsController < Devise::SessionsController
     sign_in end_user
     redirect_to end_user_path(end_user), notice: 'guestuserでログインしました。'
   end
+
+  def reject_user
+    @end_user = EndUser.find_by(name: params[:end_user][:nickname])
+    if @end_user
+      if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_end_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
   # GET /resource/sign_in
   # def new
   #   super

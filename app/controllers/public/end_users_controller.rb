@@ -11,4 +11,12 @@ class Public::EndUsersController < ApplicationController
     favorites= Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
   end
+  def withdrawal
+    @end_user = EndUser.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @end_user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
 end

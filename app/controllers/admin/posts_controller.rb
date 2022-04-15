@@ -6,6 +6,6 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to request.referer
+    redirect_to admin_end_user_path(@post.end_user.id)
   end
 end

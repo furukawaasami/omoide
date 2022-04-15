@@ -7,6 +7,7 @@
     <%= link_to end_user_followings_path(@end_user.id) do %>フォロー数: <%= @end_user.followings.count %><% end %>
     <%= link_to end_user_followers_path(@end_user.id) do %>フォロワー数: <%= @end_user.followers.count %><% end %>
     <%=link_to"いいね投稿一覧",favorite_lists_end_user_path(@end_user) %>
+    <div class="d-flex justify-content-end"><%=link_to"退会する",end_user_unsubscribe_path(@end_user) %></div>
   </div>
 </div>
 <div class="container">
