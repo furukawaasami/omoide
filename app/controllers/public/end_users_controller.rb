@@ -4,7 +4,7 @@ class Public::EndUsersController < ApplicationController
     @posts = @end_user.posts
   end
   def index
-    @end_users = EndUser.all
+    @end_users = EndUser.where(is_deleted: false)
   end
   def favorite_lists
     @end_user = EndUser.find(params[:id])

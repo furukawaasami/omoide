@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to request.referer
+    redirect_to end_user_path(current_end_user.id)
   end
 
   def destroy

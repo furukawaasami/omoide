@@ -1,6 +1,8 @@
 class Admin::PostCommentsController < ApplicationController
   def index
     @post_comments = PostComment.all
+    @posts = Post.all
+    # @post = Post.find(params[:id])
   end
 
   def destroy

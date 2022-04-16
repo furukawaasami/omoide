@@ -13,7 +13,7 @@
         <% @posts.each do |posts| %>
         <tr>
           <td><%= image_tag posts.get_image(50,50) %></td>
-          <td><% link_to %><%= posts.title %><% end %></td>
+          <td><%= link_to admin_post_path(posts.id) do %><%= posts.title %><% end %></td>
           <td><%= posts.end_user.nickname %></td>
           <td><%= posts.post_comments.count %></td>
         </tr>
