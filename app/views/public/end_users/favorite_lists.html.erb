@@ -1,4 +1,27 @@
-いいね一覧
-<% @favorite_posts.each do |post|%>
-<%=post.title %>
-<% end %>
+<div class="container">
+  <div class="row　mt-5">
+    <h3>いいね一覧</h3>
+    </div>
+    <div class="row　mt-5">
+      <table class="table">
+      <thead>
+        <tr>
+          <th>イメージ</th>
+          <th>タイトル</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorite_posts.each do |post|%>
+        <tr>
+          <td><%= image_tag post.get_image(50,50) %></td>
+          <td><%= link_to post_path(post.id) do %><%=post.title %><% end %></td>
+          <td><%= post.end_user.nickname %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

@@ -1,4 +1,9 @@
-ようこそ！<br>
+<div class="container">
+
+<%#= image_tag "seven_sisters.png" %>
+<!--<img src="seven_sisters.png" class="img-fluid" alt="Responsive image">-->
+
+ようこそ！<br
 Omoideは皆さんの旅の思い出写真を地図と一緒に記録します。<br>
 旅先での最高のOmoideを共有してください。<br>
 
@@ -6,3 +11,4 @@ Omoideは皆さんの旅の思い出写真を地図と一緒に記録します�
 <%=link_to "ログイン", new_end_user_session_path, class:"btn btn-outline-info" %>
 <%=link_to "ゲストログイン(閲覧用)", end_user_guest_sign_in_path, class:"btn btn-outline-info", method: :post %>
 <%= link_to "admin", new_admin_session_path %>
+</div>
