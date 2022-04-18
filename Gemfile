@@ -61,3 +61,4 @@ end
 gem 'devise'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'kaminari','~> 1.2.1'

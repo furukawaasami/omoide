@@ -1,15 +1,16 @@
 class Post < ApplicationRecord
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
-  validates :latitude, presence: true
-  validates :longitude, presence: true
-  validates :title, presence: true
-  validates :explanation, presence: true
-
   belongs_to :end_user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :image
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+  validates :title, presence: true, length: {minimum: 1, maximum: 30 }
+  validates :explanation, presence: true, length: {minimum: 1, maximum: 200 }
+  validates :image, presence: true
 
   def favorited_by?(end_user)
     favorites.exists?(end_user_id: end_user.id)

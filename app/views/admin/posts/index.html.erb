@@ -18,6 +18,7 @@
           <td><%= posts.post_comments.count %></td>
         </tr>
         <% end %>
+        <%= paginate @posts %>
       </tbody>
     </table>
   </div>
