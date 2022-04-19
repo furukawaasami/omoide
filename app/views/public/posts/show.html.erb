@@ -11,22 +11,17 @@
       <table class="table">
         <thead>
           <tr>
+            <div class="d-flex justify-content-around">
             <th>
-              <% if @post.favorited_by?(current_end_user) %>
-              <p>
-                <%= link_to post_favorites_path(@post), method: :delete do %>
-                  ♥<%= @post.favorites.count %> いいね
-                <% end %>
-              </p>
-              <% else %>
-              <p>
-                <%= link_to post_favorites_path(@post), method: :post do %>
-                  ♡<%= @post.favorites.count %> いいね
-                <% end %>
-              </p>
-            <% end %>
+              <%= render 'public/favorites/like', post: @post %>
             </th>
-            <td></td>
+            <td>
+              <% if @post.end_user == current_end_user %>
+                <%= link_to "投稿を編集",edit_post_path(@post.id), class: "btn btn-sm btn-primary" %>
+                <%= link_to "投稿を削除",post_path(@post.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+            </div>
           </tr>
           <tr>
             <th>タイトル</th>
