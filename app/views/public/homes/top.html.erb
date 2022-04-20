@@ -1,19 +1,42 @@
 <div class="container mt-10">
-  <div class="row">
-    <div class="col-12">
-      <div class="d-flex justify-content-center">
-    ようこそ！<br>
-    Omoideは皆さんの旅の思い出写真を地図と一緒に記録します。<br>
-    旅先での最高のOmoideを共有してください。<br>
+  <div class="row mt-5">
+<div class="main-visual">
+  <div class="text">
+    <p>
+      ようこそ！<br>
+      Omoideは皆さんの旅の思い出写真を地図と一緒に記録します。<br>
+      旅先での最高のOmoideを共有してください。<br>
+    </p>
     </div>
-    </div>
-    <div class="col-12">
-      <div class="d-flex justify-content-center">
+
+    <div class="links">
     <%=link_to "新規登録", new_end_user_registration_path, class:"btn btn-outline-info" %>
     <%=link_to "ログイン", new_end_user_session_path, class:"btn btn-outline-info" %>
     <%=link_to "ゲストログイン(閲覧用)", end_user_guest_sign_in_path, class:"btn btn-outline-info", method: :post %>
     <%= link_to "admin", new_admin_session_path %>
     </div>
     </div>
+    </div>
   </div>
-</div>
+
+
+<style>
+
+.main-visual {
+  width: 100%;
+  height: 300px;
+  /*background-image: url("images/seventh.jpg");*/
+  background-color: pink;
+  /*background-color: rgba(0, 0, 255, 0.1)*/
+}
+
+.text {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.links {
+  text-align: center;
+  margin-top: 30px;
+}
+</style>
