@@ -88,12 +88,13 @@
       <th>イメージ</th>
       <th>タイトル</th>
     </tr>
-    <% @posts.each do |posts| %>
-    <tr>
-      <td><%=link_to post_path(posts.id) do %><%= image_tag posts.get_image(25,25) %></td>
-      <td><%= posts.title %><% end %></td>
-    </tr>
-    <% end %>
+      <% @posts.each do |posts| %>
+      <tr>
+        <td><%=link_to post_path(posts.id) do %><%= image_tag posts.get_image(25,25) %></td>
+        <td><%= posts.title %><% end %></td>
+      </tr>
+      <% end %>
+    </div>
 </table>
 <%= paginate @posts %>
 

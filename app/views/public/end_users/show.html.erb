@@ -5,11 +5,11 @@
   <%= flash[:notice] %>
   <div class="row mt-5">
     <div class="col-6">
-      <h2><%= @end_user.nickname %>さん（マイページ）</h2>
+      <h4><%= @end_user.nickname %>さんの旅行記録</h4>
     </div>
     <div class="col-6">
       <div class="d-flex justify-content-around">
-        <% if @end_user == EndUser.guest %>
+        <% if @end_user == EndUser.guest || @end_user != current_end_user  %>
           <%= link_to end_user_followings_path(@end_user.id) do %>フォロー数: <%= @end_user.followings.count %><% end %>
           <%= link_to end_user_followers_path(@end_user.id) do %>フォロワー数: <%= @end_user.followers.count %><% end %>
           <%=link_to"いいね投稿一覧",favorite_lists_end_user_path(@end_user) %>
