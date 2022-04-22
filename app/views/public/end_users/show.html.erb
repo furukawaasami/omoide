@@ -5,7 +5,7 @@
   <%= flash[:notice] %>
   <div class="row mt-5">
     <div class="col-6">
-      <h2><%= @end_user.nickname %>さん</h2>
+      <h2><%= @end_user.nickname %>さん（マイページ）</h2>
     </div>
     <div class="col-6">
       <div class="d-flex justify-content-around">
@@ -100,7 +100,7 @@
         <thead>
           <tr>
             <th>タイトル</th>
-            <th></th>
+            <th>コメント数</th>
             <th></th>
           </tr>
         </thead>
@@ -108,11 +108,11 @@
           <% @posts.each do |posts| %>
           <tr>
             <td><%= link_to post_path(posts.id) do %><%= posts.title %><% end %></td>
-            <td><%= "コメント数：" %><%= posts.post_comments.count %></td>
+            <td><%= posts.post_comments.count %></td>
             <td>
               <% if posts.end_user == current_end_user %>
-              <%= link_to "編集",edit_post_path(posts.id), class: "btn btn-sm btn-primary" %>
-              <%= link_to "削除",post_path(posts.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "編集",edit_post_path(posts.id), class: "btn btn-sm btn-outline-primary" %>
+              <%= link_to "削除",post_path(posts.id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
               <% end %>
             </td>
           </tr>

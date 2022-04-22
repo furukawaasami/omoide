@@ -1,20 +1,22 @@
 <div class="container">
   <div class="row mt-5">
     <% if end_users.exists? %>
-    <% end_users.each do |end_user| %>
     <table class="table">
       <thead>
         <tr>
           <th>ニックネーム</th>
           <th>フォロー数</th>
           <th>フォロワー数</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
+        <% end_users.each do |end_user| %>
         <tr>
-          <td><%= end_user.nickname %></td>
+          <td><%= link_to end_user_path(end_user.id) do %><%= end_user.nickname %><% end %></td>
           <td>フォロー数: <%= end_user.followings.count %></td>
           <td>フォロワー数: <%= end_user.followers.count %></td>
+          <td><%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-warning" %></td>
         </tr>
         <% end %>
       </tbody>

@@ -2,11 +2,6 @@ class Public::PostsController < ApplicationController
 
   def index
       @posts = Post.all.page(params[:page]).per(10)
-    # @post = Post.find(params[:id])
-  #   @hash = Gmaps4rails.build_markers(@places) do |posts, marker|
-  #   marker.lat posts.latitude
-  #   marker.lng posts.longitude
-  # end
   end
 
   def show

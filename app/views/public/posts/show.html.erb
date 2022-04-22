@@ -1,7 +1,25 @@
 <div class="container">
   <%= flash[:notice] %>
   <div class="row mt-5">
+    <div class="col">
     <h3>投稿詳細</h3>
+    </div>
+    <div class="col">
+      <div class="d-flex justify-content-around">
+         <%= render 'public/favorites/like', post: @post %>
+         <% if @post.end_user == current_end_user %>
+            <p><%= link_to "投稿を編集",edit_post_path(@post.id), class: "btn btn-outline-info" %></p>
+            <p><%= link_to "投稿を削除",post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %></p>
+          <% end %>
+          <% unless @post.end_user == current_end_user %>
+          <% if current_end_user.following?(@post.end_user) %>
+            <p><%= link_to "フォロー外す", end_user_relationships_path(@post.end_user.id), method: :delete, class: "btn btn-outline-warning" %></p>
+          <% else %>
+            <p><%= link_to "フォローする", end_user_relationships_path(@post.end_user.id), method: :post, class: "btn btn-outline-warning" %></p>
+          <% end %>
+          <% end %>
+      </div>
+    </div>
   </div>
   <div class="row mt-5">
     <div class="col-6">
@@ -11,17 +29,10 @@
       <table class="table">
         <thead>
           <tr>
-            <div class="d-flex justify-content-around">
-            <th>
-              <%= render 'public/favorites/like', post: @post %>
-            </th>
+            <th>投稿者</th>
             <td>
-              <% if @post.end_user == current_end_user %>
-                <%= link_to "投稿を編集",edit_post_path(@post.id), class: "btn btn-sm btn-primary" %>
-                <%= link_to "投稿を削除",post_path(@post.id), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% end %>
+              <%= link_to end_user_path(@post.end_user.id) do %><%= @post.end_user.nickname %>さん<% end %>
             </td>
-            </div>
           </tr>
           <tr>
             <th>タイトル</th>
@@ -47,7 +58,7 @@
             <td>
               <%= post_comment.comment %>
               <% if post_comment.end_user == current_end_user %>
-              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-outline-danger" %>
               <% end %>
             </td>
           </tr>
@@ -56,8 +67,8 @@
       </table>
       <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "1〜100字" %>
-          <%= f.submit "送信する" %>
+          <%= f.text_area :comment, rows: '5', placeholder: "1〜100字", class: 'form-control' %>
+          <%= f.submit "送信する", class: 'form-control' %>
         <% end %>
       </div>
     </div>

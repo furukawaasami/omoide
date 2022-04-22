@@ -9,6 +9,7 @@
           <th>イメージ</th>
           <th>タイトル</th>
           <th>投稿者</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +18,11 @@
           <td><%= image_tag post.get_image(50,50) %></td>
           <td><%= link_to post_path(post.id) do %><%=post.title %><% end %></td>
           <td><%= post.end_user.nickname %></td>
+          <td>
+              <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
+              ♥いいね削除
+              <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
