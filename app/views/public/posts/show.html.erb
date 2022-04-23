@@ -23,7 +23,9 @@
   </div>
   <div class="row mt-5">
     <div class="col-7">
-      <%= image_tag @post.get_image(500,500) %>
+      <div class="d-flex justify-content-center">
+        <%= image_tag @post.get_image(500,500) %>
+      </div>
     </div>
     <div class="col-5">
       <table class="posts-show" width="600">
@@ -38,7 +40,6 @@
           <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>
-            <td></td>
           </tr>
         </thead>
         <tbody>
