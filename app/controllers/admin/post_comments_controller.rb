@@ -1,5 +1,5 @@
 class Admin::PostCommentsController < ApplicationController
-
+  before_action :authenticate_admin!,except: [:top]
   def index
       @post_comments = PostComment.order(created_at: :desc).page(params[:page]).per(10)
       @posts = Post.all

@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-
+  before_action :authenticate_end_user!,except: [:top]
   def index
       @posts = Post.joins(:end_user).where(end_user: {is_deleted: false})
 

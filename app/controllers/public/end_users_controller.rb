@@ -1,5 +1,5 @@
 class Public::EndUsersController < ApplicationController
-
+  before_action :authenticate_end_user!,except: [:top]
   def show
       @end_user = EndUser.find(params[:id])
       @posts = @end_user.posts
