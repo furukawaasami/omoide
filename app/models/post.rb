@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :title, presence: true, length: {minimum: 1, maximum: 30 }
-  validates :explanation, presence: true, length: {minimum: 1, maximum: 200 }
+  validates :explanation, presence: true, length: {minimum: 1, maximum: 100 }
   validates :image, presence: true
 
   def favorited_by?(end_user)

@@ -22,21 +22,23 @@
     </div>
   </div>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-7">
       <%= image_tag @post.get_image(500,500) %>
     </div>
-    <div class="col-6">
-      <table class="table">
+    <div class="col-5">
+      <table class="posts-show" width="600">
         <thead>
           <tr>
             <th>投稿者</th>
             <td>
               <%= link_to end_user_path(@post.end_user.id) do %><%= @post.end_user.nickname %>さん<% end %>
             </td>
+            <td></td>
           </tr>
           <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
@@ -58,16 +60,18 @@
             <td>
               <%= post_comment.comment %>
               <% if post_comment.end_user == current_end_user %>
+            </td>
+            <td>
               <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-outline-danger" %>
-              <% end %>
             </td>
           </tr>
+          <% end %>
           <% end %>
         </tbody>
       </table>
       <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "1〜100字", class: 'form-control' %>
+          <%= f.text_area :comment, rows: '2', placeholder: "1〜50字", class: 'form-control' %>
           <%= f.submit "送信する", class: 'form-control' %>
         <% end %>
       </div>

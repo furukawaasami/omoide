@@ -3,45 +3,39 @@
     <h4><%= link_to admin_end_user_path(@post.end_user.id) do %><%= @post.end_user.nickname %><% end %>さんの投稿</h4>
   </div>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-7">
       <%= image_tag @post.get_image(500,500) %>
-      <%= link_to "投稿を削除", admin_post_path(@post.id), method: :delete, class: "btn btn-danger" %>
     </div>
-    <div class="col-6">
-      <table class="table">
-        <thead>
+    <div class="col-5">
+      <table class="admin-posts-show" width="600">
           <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>
+            <td><%= link_to "投稿を削除", admin_post_path(@post.id), method: :delete, class: "btn btn-sm btn-outline-danger" %></td>
           </tr>
-        </thead>
-        <tbody>
           <tr>
             <th>説明</th>
             <td><%= @post.explanation %></td>
+            <td></td>
           </tr>
           <tr>
-            <th>コメント件数：<%= @post.post_comments.count %></th>
+            <th><br>コメント件数：<%= @post.post_comments.count %></th>
             <td>
               <% @post.post_comments.each do |post_comment| %>
-              <%#= post_comment.end_user.nickname %>
-              <%#= post_comment.created_at.strftime('%Y/%m/%d') %><%#= post_comment.comment %>
-              <%#= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-              <%# end %>
             </td>
+            <td></td>
           </tr>
           <tr>
             <th>
               <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-              <%= post_comment.end_user.nickname %><br>
-              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= post_comment.end_user.nickname %>
             </th>
+            <td><%= post_comment.comment %></td>
             <td>
-              <%= post_comment.comment %>
+              <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-outline-danger" %>
             </td>
           </tr>
           <% end %>
-        </tbody>
       </table>
     </div>
   </div>
