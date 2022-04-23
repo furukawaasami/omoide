@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-5">
-    <h3>ユーザー詳細</h3>
+    <h3><%= @end_user.nickname %>さんの詳細ページ</h3>
   </div>
   <div class="row mt-2">
     <div class="col">
@@ -28,7 +28,7 @@
   <tbody>
     <% @posts.each do |posts| %>
     <tr>
-      <td><%= posts.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= posts.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       <td><%= image_tag posts.get_image(50,50) %></td>
       <td><%= link_to admin_post_path(posts.id) do %><%= posts.title %><% end %></td>
       <td><%= posts.explanation %></td>

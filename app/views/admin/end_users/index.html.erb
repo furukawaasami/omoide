@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row mt-5">
-    <h3>ユーザー一覧</h3>
+    <h4>ユーザー一覧</h4>
+    </div>
+    <div class="row mt-3">
+    <div class="col-8 offset-2">
       <table class="table">
       <thead>
         <tr>
@@ -14,14 +17,15 @@
           <td><%= link_to admin_end_user_path(end_user.id) do %><%= end_user.nickname %><% end %></td>
           <td>
             <% if end_user.is_deleted == false %>
-              <div class="col-2 text-success">有効</div>
+              <div class="text-success">有効</div>
             <% else %>
-              <div class="col-2 text-secondary">退会</div>
+              <div class="text-secondary">退会</div>
             <% end %>
           </td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
