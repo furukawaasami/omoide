@@ -10,7 +10,7 @@
 </div>
 <div class="container">
   <div class="row mt-5">
-    <div class="col-8">
+    <div class="col-9">
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['YOUR_API_KEY'] %>&callback=initMap" async defer></script>
 
       <!--<div id="display">何かが表示される、、、、！</div>-->
@@ -82,22 +82,14 @@
         }
       </script>
     </div>
-    <div class="col-4">
-      <table class="table">
-    <tr>
-      <th>イメージ</th>
-      <th>タイトル</th>
-    </tr>
-      <% @posts.each do |posts| %>
-      <tr>
-        <td><%=link_to post_path(posts.id) do %><%= image_tag posts.get_image(25,25) %></td>
-        <td><%= posts.title %><% end %></td>
-      </tr>
-      <% end %>
-    </div>
-</table>
-<%#= paginate @posts %>
-
+    <div class="col-3">
+      <div class="posts-index">
+        <% @posts.each do |posts| %>
+        <div class="posts-index-image">
+          <%=link_to post_path(posts.id) do %><%= image_tag posts.image, width: '100%', height: '100%'  %><% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,10 +1,31 @@
 // Place all the styles related to the public/posts controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.posts-show{
+// You can use Sass (SCSS) here: https://sass-lang.com
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+.posts-show {
   table-layout: fixed;
 }
 
-.posts-show td{
+.posts-show td {
   word-wrap: break-word;
 }
+
+.posts-index {
+  width : 100%;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.posts-index-image {
+  height: 150px;
+  width: 100%;
+}
+

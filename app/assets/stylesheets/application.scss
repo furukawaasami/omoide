@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+.app-background-image {
+  width: 100%;
+  height: 100%;
+  background-image: url("flowers.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+}
