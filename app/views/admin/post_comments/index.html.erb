@@ -17,7 +17,7 @@
       <td><%= link_to admin_post_path(post_comment.post.id) do %><%= post_comment.post.title %><% end %></td>
       <td><%= post_comment.comment %></td>
       <td><%= post_comment.end_user.nickname %></td>
-      <td><%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
+      <td><%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
     <%= paginate @post_comments %>
