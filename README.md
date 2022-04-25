@@ -30,8 +30,8 @@ URL:https://drive.google.com/file/d/1kU4bnrIhmS--cRFvQ1GvkNjfj7SbxYeV/view?usp=s
 - IDE：Cloud9
 
 ## 使用素材
-design AC
+- design AC
 URL:https://www.design-ac.net/
 
-Hatchful
+- Hatchful
 URL:https://hatchful.shopify.com/ja/
