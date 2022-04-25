@@ -6,11 +6,11 @@
       <% @favorite_posts.each do |post|%>
       <div class="card-group">
   <div class="card">
-    <div class="card__imgframe"><%= image_tag post.get_image(700,500) %></div>
+    <div class="card__imgframe"><%= link_to post_path(post.id) do %><%= image_tag post.get_image(700,500) %><% end %></div>
     <div class="card__textbox">
       <div class="card__titletext">
-        投稿者:<%= post.end_user.nickname %><br>
-        Title:<%= link_to post_path(post.id) do %><%=post.title %><% end %>
+        Nickname:<%= post.end_user.nickname %>さん<br>
+        Title:<%#= link_to post_path(post.id) do %><%=post.title %><%# end %>
       </div>
       <div class="card__overviewtext">
         <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
