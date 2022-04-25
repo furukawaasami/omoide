@@ -21,6 +21,9 @@
   height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
+  border-left: 5px dotted rgba(0,0,0,.1);
+  box-shadow: 0 0 0 5 #f8f8f8;
+  padding: 1em;
 }
 
 

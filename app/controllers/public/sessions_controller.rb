@@ -14,7 +14,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     end_user = EndUser.guest
     sign_in end_user
-    redirect_to end_user_path(end_user), notice: 'guestuserでログインしました。'
+    redirect_to posts_path, notice: 'guestuserでログインしました。'
   end
 
   def reject_user
