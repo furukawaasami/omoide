@@ -3,13 +3,13 @@
     <h4><%= link_to admin_end_user_path(@post.end_user.id) do %><%= @post.end_user.nickname %><% end %>さんの投稿</h4>
   </div>
   <div class="row mt-5">
-    <div class="col-7">
+    <div class="col-8">
       <div class="d-flex justify-content-around">
-        <%= image_tag @post.get_image(500,500) %>
+        <%= image_tag @post.get_image(600,600) %>
       </div>
     </div>
-    <div class="col-5">
-      <table class="admin-posts-show" width="600">
+    <div class="col-4">
+      <table class="admin-posts-show" width="500">
           <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>

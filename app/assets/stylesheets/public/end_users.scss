@@ -16,3 +16,70 @@
   border-left: 5px dotted rgba(0,0,0,.1);
   box-shadow: 0 0 0 5px #f8f8f8;
 }
+
+.card-group{
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 700px;
+  width: 90%;
+  height: auto;
+
+   /* 注目 */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* 注目 */
+.card-group > :nth-child(2n){
+  margin-left: 20px;
+}
+/* 注目 */
+.card-group > :nth-child(n+3){
+  margin-top: 20px;
+}
+
+
+
+.card{
+
+  /* 注目 */
+  width: calc((100% - 20px * 1) / 2);
+
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2)
+}
+
+.card__imgframe{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.card__textbox{
+  width: 100%;
+  height: auto;
+  padding: 20px 18px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.card__textbox > * + *{
+  margin-top: 10px;
+}
+
+.card__titletext{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 125%;
+}
+
+.card__overviewtext{
+  font-size: 12px;
+  line-height: 150%;
+}

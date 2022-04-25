@@ -21,6 +21,6 @@ class Post < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/logo_transparent.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 end

@@ -1,32 +1,26 @@
 <div class="container">
-  <div class="row　mt-5">
-    <h3>いいね一覧</h3>
+  <div class="row mt-5">
+    <h4>お気に入りの投稿</h4>
     </div>
     <div class="row　mt-5">
-      <table class="table">
-      <thead>
-        <tr>
-          <th>イメージ</th>
-          <th>タイトル</th>
-          <th>投稿者</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @favorite_posts.each do |post|%>
-        <tr>
-          <td><%= image_tag post.get_image(50,50) %></td>
-          <td><%= link_to post_path(post.id) do %><%=post.title %><% end %></td>
-          <td><%= post.end_user.nickname %></td>
-          <td>
-              <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
+      <% @favorite_posts.each do |post|%>
+      <div class="card-group">
+  <div class="card">
+    <div class="card__imgframe"><%= image_tag post.get_image(700,500) %></div>
+    <div class="card__textbox">
+      <div class="card__titletext">
+        投稿者:<%= post.end_user.nickname %><br>
+        Title:<%= link_to post_path(post.id) do %><%=post.title %><% end %>
+      </div>
+      <div class="card__overviewtext">
+        <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
               ♥いいね削除
               <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+      </div>
+    </div>
+  </div>
+  </div>
+    <% end %>
   </div>
 </div>
 
