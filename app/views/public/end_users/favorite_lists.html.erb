@@ -10,12 +10,14 @@
     <div class="card__textbox">
       <div class="card__titletext">
         Nickname:<%= post.end_user.nickname %>さん<br>
-        Title:<%#= link_to post_path(post.id) do %><%=post.title %><%# end %>
+        Title:<%=post.title %>
       </div>
       <div class="card__overviewtext">
-        <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
-              ♥いいね削除
-              <% end %>
+        <% if @end_user == current_end_user %>
+            <%= link_to post_favorites_path(post), method: :delete, class: "btn btn-outline-warning" do %>
+            ♥いいね削除
+            <% end %>
+        <% end %>
       </div>
     </div>
   </div>

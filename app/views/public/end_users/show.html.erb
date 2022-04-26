@@ -10,12 +10,12 @@
     <div class="col-6">
       <div class="d-flex justify-content-around">
         <% if @end_user == EndUser.guest || @end_user != current_end_user  %>
-          <%= link_to end_user_followings_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロー数: <%= @end_user.followings.count %><% end %>
-          <%= link_to end_user_followers_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロワー数: <%= @end_user.followers.count %><% end %>
+          <%= link_to end_user_followings_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロー一覧<% end %>
+          <%= link_to end_user_followers_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロワー一覧<% end %>
           <%=link_to"いいね投稿一覧",favorite_lists_end_user_path(@end_user), class: "btn btn-sm btn-outline-secondary" %>
         <% else %>
-          <%= link_to end_user_followings_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロー数: <%= @end_user.followings.count %><% end %>
-          <%= link_to end_user_followers_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロワー数: <%= @end_user.followers.count %><% end %>
+          <%= link_to end_user_followings_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロー一覧<% end %>
+          <%= link_to end_user_followers_path(@end_user.id), class: "btn btn-sm btn-outline-secondary" do %>フォロワー一覧<% end %>
           <%=link_to"いいね投稿一覧",favorite_lists_end_user_path(@end_user), class: "btn btn-sm btn-outline-secondary" %>
           <%=link_to"退会する",end_user_unsubscribe_path(@end_user), class: "btn btn-sm btn-outline-secondary" %>
         <% end %>

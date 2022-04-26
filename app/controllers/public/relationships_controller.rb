@@ -13,11 +13,11 @@ class Public::RelationshipsController < ApplicationController
   # フォロー一覧
   def followings
     @end_user = EndUser.find(params[:end_user_id])
-    @end_users = @end_user.followings
+    @end_users = EndUser.where(id: Relationship.where(follower_id: params[:end_user_id]).pluck(:followed_id), is_deleted: false)
   end
   # フォロワー一覧
   def followers
     @end_user = EndUser.find(params[:end_user_id])
-    @end_users = @end_user.followers
+    @end_users = EndUser.where(id: Relationship.where(followed_id: params[:end_user_id]).pluck(:follower_id), is_deleted: false)
   end
 end
