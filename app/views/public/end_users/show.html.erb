@@ -98,27 +98,23 @@
     <div class="col-4">
       <div class="end-user-show">
        <div class="table table-hover">
-          <table>
-            <thead>
+          <table class="end-user-show-table">
+            <tr>
+              <th class="title">タイトル/コメント数</th>
+              <th class="comment-count"></th>
+              <th class="edit-destroy"></th>
+            </tr>
+            <% @posts.each do |posts| %>
               <tr>
-                <th>タイトル</th>
-                <th>コメント</th>
-                <th></th>
-              </tr>
-            </thead>
-              <% @posts.each do |posts| %>
-            <tbody>
-              <tr>
-                <td><%= link_to post_path(posts.id) do %><%= posts.title %><% end %></td>
-                <td><%= posts.post_comments.count %></td>
-                <td>
+                <td class="title"><%= link_to post_path(posts.id) do %><%= posts.title %><% end %></td>
+                <td class="comment-count"><%= posts.post_comments.count %></td>
+                <td class="edit-destroy">
                   <% if posts.end_user == current_end_user %>
                   <%= link_to "編集",edit_post_path(posts.id), class: "btn btn-sm btn-outline-primary" %>
                   <%= link_to "削除",post_path(posts.id), method: :delete, class: "btn btn-sm btn-outline-danger" %>
                   <% end %>
                 </td>
               </tr>
-            </tbody>
           <% end %>
           </table>
         </div>

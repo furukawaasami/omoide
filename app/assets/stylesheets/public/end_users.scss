@@ -17,13 +17,25 @@
   box-shadow: 0 0 0 2px #f8f8f8;
 }
 
-.table{
-  width : 100%;
+.end-user-show-table{
+  width : auto;
   height: 500px;
-  // font-size: 13px;
   word-wrap: break-word;
 }
-
+.end-user-show-table,td{
+  width : auto;
+  word-wrap: break-word;
+  font-size: 90%;
+}
+.title{
+  width: 50%;
+}
+.comment-count{
+  width: 10%;
+}
+.edit-destroy{
+  width: 40%;
+}
 .card-group{
   margin-left: auto;
   margin-right: auto;
