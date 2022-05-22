@@ -6,7 +6,9 @@
     </div>
     <div class="col">
       <div class="d-flex justify-content-around">
-         <%= render 'public/favorites/like', post: @post %>
+        <div id="favorite-<%= @post.id %>">
+          <%= render 'public/favorites/favorite', post: @post %>
+        </div>
          <% if @post.end_user == current_end_user %>
             <p><%= link_to "投稿を編集",edit_post_path(@post.id), class: "btn btn-outline-info" %></p>
             <p><%= link_to "投稿を削除",post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %></p>
