@@ -18,7 +18,7 @@
           <% end %>
           <% unless @post.end_user == current_end_user %>
           <% if current_end_user.following?(@post.end_user) %>
-            <p><%= link_to "フォロー外す", end_user_relationships_path(@post.end_user.id), method: :delete, class: "btn btn-outline-warning" %></p>
+            <p><%= link_to "フォロー解除", end_user_relationships_path(@post.end_user.id), method: :delete, class: "btn btn-warning" %></p>
           <% else %>
             <p><%= link_to "フォローする", end_user_relationships_path(@post.end_user.id), method: :post, class: "btn btn-outline-warning" %></p>
           <% end %>
@@ -76,7 +76,9 @@
             })();
         }
       </script>
-      <table class="posts-show" width="500"><br>
+      <br>
+      <div class="posts-show">
+      <table class="posts-show-table">
         <thead>
           <tr>
             <th>投稿者</th>
@@ -118,12 +120,12 @@
           <% end %>
         </tbody>
       </table>
-      <div>
+    </div>
+    <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, rows: '2', placeholder: "1〜50字", class: 'form-control' %>
           <%= f.submit "送信する", class: 'form-control' %>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
